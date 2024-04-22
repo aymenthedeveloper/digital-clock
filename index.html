@@ -16,17 +16,32 @@
             display: flex;
         }
         .col{
-            transform: translateY(50%);
+            transform: translateY(45%);
+            transition: 500ms;
+        }
+        .hours1{
+            --x: 0;
+            transform: translateY(calc(45% - (10% * var(--x))));
+        }
+        .hours2{
+            --x: 0;
+            transform: translateY(calc(45% - (10% * var(--x))));
+        }
+        .minutes1{
+            --x: 0;
+            transform: translateY(calc(45% - (10% * var(--x))));
+        }
+        .minutes2{
+            --x: 0;
+            transform: translateY(calc(45% - (10% * var(--x))));
         }
         .seconds2{
             --x: 0;
-            transform: translateY(calc(50% - (10% * var(--x))));
-            transition: 500ms;
+            transform: translateY(calc(45% - (10% * var(--x))));
         }
         .seconds1{
-            --y: 0;
-            transform: translateY(calc(50% - (10% * var(--y))));
-            transition: 500ms;
+            --x: 0;
+            transform: translateY(calc(45% - (10% * var(--x))));
         }
         .current {
             font-weight: 700;
@@ -36,50 +51,15 @@
 </head>
 <body>
     <div class="clock">
-        <div class="col">0</div>
-        <div class="col">0</div>
+        <div class="col hours1"></div>
+        <div class="col hours2"></div>
         <div class="col">:</div>
-        <div class="col">0</div>
-        <div class="col">0</div>
+        <div class="col minutes1"></div>
+        <div class="col minutes2"></div>
         <div class="col">:</div>
-        <div class="seconds1"></div>
-        <div class="seconds2"></div>
+        <div class="col seconds1"></div>
+        <div class="col seconds2"></div>
     </div>
-    <script>
-        let time = 0;
-        function createClockNumbers(elementsContainer, elementsNumber, elementsClass){
-            for (let i = 0; i <= elementsNumber; i++) {
-                const n = document.createElement('div');
-                n.classList.add(elementsClass)
-                n.innerText = i;
-                elementsContainer.appendChild(n)
-            }
-        }
-        const seconds2 = document.querySelector('.seconds2');
-        createClockNumbers(seconds2, 9, 's2')
-        const s2 = document.querySelectorAll('.s2');
-        let prevDigit2 = s2[0];
-        setInterval(() => {
-            time++
-            let current = time % 10;
-            let currentNumber = s2[current];
-            prevDigit2.classList.remove('current')
-            currentNumber.classList.add('current')
-            seconds2.style.setProperty('--x', current);
-            prevDigit2 = currentNumber;
-        },1000) 
-        const seconds1 = document.querySelector('.seconds1');
-        createClockNumbers(seconds1, 5, 's1')
-        const s1 = document.querySelectorAll('.s1');
-        let prevDigit1 = s1[0];
-        setInterval(() => {
-            let current = Math.trunc(time / 10) % 6;
-            let currentNumber = s1[current];
-            prevDigit1.classList.remove('current')
-            currentNumber.classList.add('current')
-            seconds1.style.setProperty('--y', current);
-            prevDigit1 = currentNumber;
-        },1000 * 10)
-    </script>
+    <script src="main.js"></script>
 </body>
 </html>
