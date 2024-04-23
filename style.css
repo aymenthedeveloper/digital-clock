@@ -3,7 +3,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
   font-family: Arial, Helvetica, sans-serif;
   background-image: url(./gray-bg.jpg);
   background-size: cover;
@@ -13,20 +12,37 @@ body {
 .clock {
   display: flex;
   column-gap: 2px;
-  transform: translateY(40%);
+  transform: translateY(45%);
 }
-
 .col {
   transition: 500ms;
   transform: translateY(calc(-10% * var(--x)));
+  font-size: clamp(1rem, 1vw + 1rem, 2rem);
 }
-.number{
+.number {
   display: flex;
   justify-content: center;
-  color: #848484;
+  color: hsla(0, 0%, 100%, 0.3);
 }
 
-.number.current, .colon {
+.number.current,
+.colon {
   font-weight: 900;
   color: white;
+}
+
+@media (min-width: 1024px) {
+  body {
+    background-image: url(./gray-bg-hr.jpg);
+  }
+}
+@media (max-height: 750px) {
+  .col {
+    font-size: 1.5rem;
+  }
+}
+@media (max-height: 550px) {
+  .col {
+    font-size: 1rem;
+  }
 }
